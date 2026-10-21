@@ -1,0 +1,101 @@
+# Written by scripts/calibrate.py. Aggregate pattern counts from verified emails;
+# no names or addresses are stored here. Re-run calibrate.py to refresh.
+calibrated_at: '2026-10-21'
+min_rows_to_trust: 30
+holdout_share: 0.3
+segments:
+  local:
+    sample_size: 2059
+    order:
+    - first
+    - flast
+    - first.last
+    - firstlast
+    - firstl
+    - last
+    - fl
+    - f.last
+    - first.l
+    - lastf
+    - last.first
+    - first_last
+    shares:
+      first: 0.6884
+      flast: 0.1462
+      first.last: 0.0476
+      firstlast: 0.0311
+      firstl: 0.0282
+      last: 0.0073
+      fl: 0.0051
+      f.last: 0.0049
+      first.l: 0.0034
+      lastf: 0.001
+      last.first: 0.0005
+    other_share: 0.0364
+    sources:
+      roofing: 1291
+      pest: 697
+      agencies: 71
+    people: founders
+labels:
+  roofing:
+    sample_size: 1291
+    order:
+    - first
+    - flast
+    - first.last
+    - firstlast
+    - firstl
+    - last
+    shares:
+      first: 0.7057
+      flast: 0.1263
+      first.last: 0.0565
+      firstlast: 0.0325
+      firstl: 0.0225
+      last: 0.0077
+      f.last: 0.0062
+      first.l: 0.0023
+      fl: 0.0023
+    other_share: 0.038
+    segment: local
+  pest:
+    sample_size: 697
+    order:
+    - first
+    - flast
+    - firstl
+    - first.last
+    - firstlast
+    - fl
+    shares:
+      first: 0.6664
+      flast: 0.1664
+      firstl: 0.0416
+      first.last: 0.033
+      firstlast: 0.0301
+      fl: 0.0108
+      first.l: 0.0057
+      last: 0.0057
+      f.last: 0.0029
+      lastf: 0.0029
+      last.first: 0.0014
+    other_share: 0.033
+    segment: local
+  agencies:
+    sample_size: 71
+    order:
+    - first
+    - flast
+    - first.last
+    - firstlast
+    - last
+    - firstl
+    shares:
+      first: 0.5915
+      flast: 0.3099
+      first.last: 0.0282
+      firstlast: 0.0141
+      last: 0.0141
+    other_share: 0.0423
+    segment: local

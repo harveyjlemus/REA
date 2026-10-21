@@ -1,0 +1,43 @@
+# Email patterns the guesser knows, and the order it tries them in.
+#
+# Tokens: {first} {last} {f} = first initial, {l} = last initial, {m} = middle initial.
+# Names are lowercased and stripped of accents and punctuation before rendering.
+#
+# The starting order below is used until calibration replaces it. Run
+#   python3 scripts/calibrate.py --from <your verified exports> ...
+# and it writes config/patterns.calibrated.yaml, which wins per segment.
+
+patterns:
+  first: "{first}"
+  first.last: "{first}.{last}"
+  flast: "{f}{last}"
+  firstlast: "{first}{last}"
+  firstl: "{first}{l}"
+  f.last: "{f}.{last}"
+  first_last: "{first}_{last}"
+  last: "{last}"
+  first-last: "{first}-{last}"
+  first.l: "{first}.{l}"
+  lastf: "{last}{f}"
+  last.first: "{last}.{first}"
+  lastfirst: "{last}{first}"
+  fl: "{f}{l}"
+  fmlast: "{f}{m}{last}"
+  fml: "{f}{m}{l}"
+
+# Tried in this order when nothing better is known.
+starting_order: [first, first.last, flast, firstlast, firstl, f.last, first_last, last]
+
+# A row with only a first name can only use patterns without {last}/{l}.
+first_only_order: [first]
+
+# Hard cap on Million Verifier checks for one person (override with --max-guesses).
+max_guesses_per_person: 6
+
+# A full name with a common short form (Michael -> mike) also gets "{short}@"
+# at this position. In the local-owner backtest about 2% of owners use it.
+nickname_guess_rank: 4
+
+# Two-part last names ("Van Horn") also get up to this many guesses with the
+# other spelling ("horn"), placed after the strongest regular guesses.
+alt_last_name_top_n: 2

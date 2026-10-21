@@ -1,0 +1,7 @@
+# Everything founder-email-finder needs. `make check` uses these and nothing else.
+requests>=2.31          # websites and the three APIs
+beautifulsoup4>=4.12    # reading web pages
+dnspython>=2.4          # mail check (MX records) on your own computer
+pyyaml>=6.0             # config files
+openpyxl>=3.1           # .xlsx input (Scrap.io exports)
+pytest>=7.0             # tests

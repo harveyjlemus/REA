@@ -1,0 +1,118 @@
+# Word lists the code uses. Edit freely; the tests pin the behavior that matters.
+
+# Titles that make someone "the founder" for this tool, strongest first.
+# rank 1 wins over rank 2, and so on. Matching ignores case.
+founder_titles:
+  1: [founder, co-founder, cofounder, co founder, owner, co-owner, coowner, sole proprietor, proprietor]
+  2: [president, ceo, chief executive officer, chief executive, principal, managing principal]
+  3: [managing partner, managing member, managing director, partner, operator, owner/operator]
+  4: [general manager, gm, vice president, vp]
+
+# People ranked above this are listed in other_people but never picked as "the founder".
+founder_max_rank: 3
+
+# Local parts that are an inbox, not a person.
+role_inboxes: [info, contact, contactus, office, admin, administrator, sales, support, hello, hi,
+  service, services, team, help, billing, bills, accounts, accounting, estimates, estimate, quotes,
+  quote, jobs, careers, career, hr, hiring, marketing, media, press, pr, news, newsletter, webmaster,
+  web, website, noreply, no-reply, donotreply, booking, bookings, book, appointments, appointment,
+  orders, order, inquiries, inquiry, enquiries, enquiry, customerservice, customercare, care,
+  mail, email, reception, frontdesk, dispatch, scheduling, schedule, general, request, requests,
+  invoices, invoice, ap, ar, payables, receivables, legal, privacy, security, abuse, postmaster,
+  hostmaster, events, partners, partnerships, feedback, compliance, service-request, office-manager,
+  manager, operations, ops, warranty, claims, permits, projects, project, residential, commercial,
+  roofing, hvac, plumbing, pest, contractor, home, store, shop, online, wholesale, retail]
+
+# A "website" on these domains is not the company's own domain: there is no domain to guess at.
+non_own_domains: [facebook.com, fb.com, fb.me, instagram.com, linkedin.com, twitter.com, x.com,
+  youtube.com, youtu.be, tiktok.com, pinterest.com, yelp.com, google.com, goo.gl, g.page, g.co,
+  business.site, sites.google.com, wixsite.com, wix.com, godaddysites.com, square.site,
+  squarespace.com, weebly.com, wordpress.com, blogspot.com, linktr.ee, linktree.com, beacons.ai,
+  angi.com, angieslist.com, homeadvisor.com, thumbtack.com, houzz.com, nextdoor.com, bbb.org,
+  yellowpages.com, mapquest.com, manta.com, porch.com, buildzoom.com, bark.com, alignable.com,
+  carrd.co, canva.site, ueniweb.com, webs.com, jimdosite.com, strikingly.com, mystrikingly.com,
+  site123.me, business.page, hubspotpagebuilder.com, myshopify.com, amazon.com, etsy.com,
+  craigslist.org, angi.co, networx.com, expertise.com, chamberofcommerce.com, dandb.com,
+  opencorporates.com, bizapedia.com, zoominfo.com, apollo.io, crunchbase.com, glassdoor.com,
+  indeed.com]
+
+# Personal mailbox providers. An email here is the person's own, not the company's.
+freemail_domains: [gmail.com, googlemail.com, yahoo.com, ymail.com, rocketmail.com, hotmail.com,
+  outlook.com, live.com, msn.com, aol.com, aim.com, icloud.com, me.com, mac.com, comcast.net,
+  verizon.net, att.net, sbcglobal.net, bellsouth.net, cox.net, charter.net, earthlink.net,
+  optonline.net, frontier.com, frontiernet.net, windstream.net, centurylink.net, q.com, juno.com,
+  netzero.net, protonmail.com, proton.me, gmx.com, gmx.net, mail.com, zoho.com, yandex.com,
+  rogers.com, shaw.ca, sympatico.ca, roadrunner.com, rr.com, twc.com, embarqmail.com,
+  suddenlink.net, mediacombb.net, cableone.net, inbox.com, fastmail.com, hushmail.com,
+  ptd.net, snet.net, wowway.com, tds.net, hughes.net, consolidated.net, nc.rr.com]
+
+# Multi-part public suffixes, so "acme.co.uk" stays "acme.co.uk" (US-focused list).
+multi_part_suffixes: [co.uk, org.uk, ac.uk, gov.uk, me.uk, ltd.uk, plc.uk, com.au, net.au, org.au,
+  co.nz, com.br, com.mx, com.ar, co.za, co.in, com.sg, com.hk, co.jp, com.tr, com.cn, com.tw,
+  co.il, com.my, com.ph, com.pk, com.co, com.pe, com.ve]
+
+# Text that means a domain is parked, for sale, or a placeholder.
+parked_markers: ["domain is for sale", "buy this domain", "this domain may be for sale",
+  "domain for sale", "hugedomains", "sedo.com", "dan.com", "afternic", "parkingcrew",
+  "bodis.com", "this domain has been registered", "future home of something quite cool",
+  "domain name is parked", "parked free", "godaddy.com/domainsearch", "this site is parked",
+  "domain has expired", "this domain is parked", "inquire about this domain"]
+
+# Text that means a bot wall or challenge page.
+botwall_markers: ["cf-chl", "challenge-platform", "just a moment...", "attention required! | cloudflare",
+  "cf-browser-verification", "px-captcha", "/_incapsula_resource", "ddos protection by",
+  "request unsuccessful. incapsula", "are you a robot", "verify you are human",
+  "sucuri website firewall", "checking your browser before accessing", "g-recaptcha",
+  "hcaptcha", "access to this page has been denied"]
+
+# Markup that means the page is empty until JavaScript runs.
+js_shell_markers: ['<div id="root"></div>', '<div id="app"></div>', '<div id="__next"></div>',
+  "you need to enable javascript", "please enable javascript", "javascript is required",
+  "this app works best with javascript"]
+
+# Words in a link or URL that point at a page likely to name the owner.
+# Earlier groups are fetched first.
+subpage_keywords:
+  - [about, about-us, aboutus, our-story, story, who-we-are, history, company]
+  - [team, our-team, meet, staff, leadership, people, founder, owner, management]
+  - [contact, contact-us, contactus]
+
+# Fallback paths tried when the homepage links to nothing useful.
+subpage_fallback_paths: [/about, /about-us, /team, /contact, /contact-us]
+
+# Words that are never part of a person's name on a business site.
+name_stopwords: [our, the, a, an, and, of, for, to, in, on, at, by, with, from, your, you, we, us,
+  contact, call, today, now, free, estimate, estimates, quote, home, about, team, meet, learn,
+  more, read, view, see, click, here, services, service, roofing, roofer, roofers, hvac, heating,
+  cooling, plumbing, plumber, pest, control, electric, electrical, construction, contractor,
+  contractors, company, co, inc, llc, ltd, corp, group, holdings, solutions, systems, home,
+  homes, repair, repairs, installation, residential, commercial, privacy, policy, terms,
+  copyright, rights, reserved, all, menu, search, login, sign, up, out, get, started, book,
+  appointment, schedule, request, submit, send, message, email, phone, fax, address, hours,
+  monday, tuesday, wednesday, thursday, friday, saturday, sunday, january, february, march,
+  april, may, june, july, august, september, october, november, december, north, south, east,
+  west, new, york, county, city, state, street, avenue, road, suite, united, states, america,
+  owner, founder, president, ceo, principal, partner, manager, director, officer, chief,
+  executive, operator, general, vice, senior, junior, lead, head, best, top, quality, family,
+  owned, operated, local, licensed, insured, certified, award, winning, years, experience,
+  customer, customers, review, reviews, testimonials, gallery, blog, news, faq, careers,
+  agency, marketing, design, digital, media, studio, studios, creative, consulting, partners]
+
+honorifics: [mr, mrs, ms, miss, mx, dr, prof, rev, sir, hon, fr, capt]
+name_suffixes: [jr, sr, ii, iii, iv, v, phd, md, dds, dmd, cpa, pe, esq, mba, rn, np, pa, dc, od,
+  jd, cfa, cfp, aia, leed, ap, pmp, clu, chfc, ea, do, dvm, lmt, lcsw]
+last_name_particles: [van, von, de, del, della, der, den, da, di, du, la, le, st, ste, mac, dos, das, ter, ten]
+
+# Industry words that mark a row as a local business or a startup when --segment auto.
+segment_keywords:
+  local: [roof, hvac, heating, plumb, pest, landscap, lawn, clean, janitorial, construction,
+    contractor, remodel, electric, paint, floor, pool, fence, tree, moving, mover, auto, collision,
+    dental, dentist, chiropract, salon, spa, restaurant, bakery, cafe, real estate, insurance agency,
+    law firm, attorney, accounting firm, cpa, veterinar, gym, fitness, daycare, funeral, towing,
+    locksmith, garage door, solar install, septic, gutter, siding, window, door, cabinet, countertop,
+    masonry, concrete, paving, excavat, water cooler, marketing agency, public relations, event,
+    manufactur, machine shop, print]
+  startup: [software, saas, internet, information technology, computer software, fintech, biotech,
+    artificial intelligence, machine learning, platform, app, cloud, developer, api, venture,
+    blockchain, crypto, marketplace, e-learning, edtech, healthtech, insurtech, proptech, devtools,
+    cybersecurity, data analytics]

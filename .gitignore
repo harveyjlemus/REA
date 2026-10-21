@@ -1,0 +1,26 @@
+# Keys. Never commit these.
+.env
+.env.*
+!.env.example
+
+# Run folders hold real people's names and emails.
+runs/
+private/
+*.private.csv
+
+# Lead files dropped at the repo root (Apollo, Scrap.io, Million Verifier exports)
+/*.csv
+/*.xlsx
+
+# Cross-run cache (catch-all memory, page cache)
+.fef-cache/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Claude Code links created by `make install-skills`
+.claude/skills/

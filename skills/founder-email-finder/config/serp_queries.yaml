@@ -1,0 +1,24 @@
+# Google searches (through Serper) the tool may run for a row, in order.
+# It stops a row's list as soon as one search answers the question.
+# Placeholders: {company} {domain} {city} {state} {first}
+# A query whose placeholder is empty for the row is skipped, not sent half-filled.
+
+# The row has a company but no person yet.
+person:
+  local:
+    - '"{company}" owner {city} {state}'
+    - 'site:linkedin.com/in "{company}" owner OR founder OR president'
+  startup:
+    - 'site:linkedin.com/in "{company}" founder OR co-founder OR CEO'
+    - '"{company}" founder'
+
+# The row has a first name but no last name.
+last_name:
+  - 'site:linkedin.com/in "{first}" "{company}"'
+  - '"{first}" "{company}" owner OR founder OR president'
+
+# Nothing at the domain shows the email pattern yet.
+pattern:
+  - '"@{domain}"'
+
+results_per_search: 10

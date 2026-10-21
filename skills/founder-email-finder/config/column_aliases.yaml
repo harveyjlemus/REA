@@ -1,0 +1,81 @@
+# How input files are read.
+#
+# Known export formats are recognized by a few signature headers, then mapped
+# with their own table (because "Name" means the company in Scrap.io but a
+# person elsewhere). Anything else falls back to the generic aliases.
+# Header matching ignores case, spaces, underscores and punctuation.
+
+formats:
+  scrapio:
+    label: Scrap.io (Google Maps)
+    signature: [google id, main type, website (root url)]
+    map:
+      company: [name]
+      website: [website (root url), website]
+      first_name: [individual email first name]
+      last_name: [individual email last name]
+      email: [individual email]
+      business_email: [email, contact email]
+      city: [city]
+      state: [state, level 1 division]
+      country: [country]
+      industry: [main type]
+      closed: [is closed permanently]
+      all_emails_json: [all emails]
+      company_linkedin: [linkedin link]
+
+  apollo:
+    label: Apollo export
+    signature: [first name, last name, company name, seniority]
+    map:
+      first_name: [first name]
+      last_name: [last name]
+      full_name: [full name]
+      title: [title]
+      seniority: [seniority]
+      email: [email]
+      email_status: [email status]
+      company: [company name]
+      website: [company website short, company domain, company website, company website full, website]
+      city: [lead city, city, company city]
+      state: [lead state, state, company state]
+      country: [lead country, country, company country]
+      linkedin_url: [linkedin link, linkedin, person linkedin url]
+      industry: [industry]
+      employees: [employee count, employees count, employees]
+      catchall_flag: [email domain catchall]
+      mv_result: [result]
+      mv_quality: [quality]
+
+  millionverifier:
+    label: Million Verifier report
+    # MV keeps your original columns and adds these. Mapped with the generic
+    # aliases plus the two result columns.
+    signature: [quality, result, free, role]
+    map:
+      mv_result: [result]
+      mv_quality: [quality]
+
+generic:
+  company: [company, company name, companyname, business, business name, organization, organisation, account, account name, employer]
+  website: [website, company website, website url, url, domain, company domain, web, site, homepage]
+  first_name: [first name, firstname, first, given name]
+  last_name: [last name, lastname, last, surname, family name]
+  full_name: [full name, fullname, contact name, person, person name, owner, owner name, founder, founder name, contact]
+  title: [title, job title, position, role, jobtitle]
+  email: [email, work email, email address, e-mail, emailaddress, business email]
+  email_status: [email status]
+  city: [city, town]
+  state: [state, province, region]
+  country: [country]
+  linkedin_url: [linkedin, linkedin url, linkedin profile, person linkedin url, linkedin link]
+  industry: [industry, category, vertical]
+  employees: [employees, employee count, headcount, company size]
+  segment: [segment]
+  closed: [closed, is closed, permanently closed, is closed permanently, out of business]
+  mv_result: [result]
+  mv_quality: [quality]
+
+# A lone "name" column is a person when a company column also exists,
+# otherwise it is treated as the company (and the preview says so).
+ambiguous_name_headers: [name]
